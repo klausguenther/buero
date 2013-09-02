@@ -17,10 +17,10 @@ var tabelle = 'jobs_stunden';
 var job_id = <?php echo $jobs_positionen_id; ?>;
 //-->
 </script>
-<script type="text/javascript" src="includes/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="includes/delete.js"></script>
-<script type="text/javascript" src="includes/kontextmenue.js"></script>
-<script type="text/javascript" src="includes/buero.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/delete.js"></script>
+<script type="text/javascript" src="js/kontextmenue.js"></script>
+<script type="text/javascript" src="js/buero.js"></script>
 </head>
 <body onload="$('.clock').click(ToggleTimer);">
 <?php	

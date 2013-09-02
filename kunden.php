@@ -22,10 +22,10 @@ var tabelle = 'kunden';
 var job_id;
 //-->
 </script>
-<script type="text/javascript" src="includes/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="includes/delete.js"></script>
-<script type="text/javascript" src="includes/kontextmenue.js"></script>
-<script type="text/javascript" src="includes/buero.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/delete.js"></script>
+<script type="text/javascript" src="js/kontextmenue.js"></script>
+<script type="text/javascript" src="js/buero.js"></script>
 </head>
 <body>
 <div class="arrow" style="border-style:dotted;"></div>

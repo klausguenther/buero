@@ -17,11 +17,11 @@ var tabelle = 'jobs_positionen';
 var job_id = <?php echo $job_id; ?>; 
 //-->
 </script>
-<script type="text/javascript" src="includes/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="includes/delete.js"></script>
-<script type="text/javascript" src="includes/kontextmenue.js"></script>
-<script type="text/javascript" src="includes/buero.js"></script>
-<script type="text/javascript" src="includes/auswahl_funktionen.js"></script>
+<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/js/delete.js"></script>
+<script type="text/javascript" src="/js/kontextmenue.js"></script>
+<script type="text/javascript" src="/js/buero.js"></script>
+<script type="text/javascript" src="/js/auswahl_funktionen.js"></script>
 </head>
 <body>
 <?php	
