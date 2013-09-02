@@ -21,6 +21,7 @@ var job_id = <?php echo $jobs_positionen_id; ?>;
 <script type="text/javascript" src="js/delete.js"></script>
 <script type="text/javascript" src="js/kontextmenue.js"></script>
 <script type="text/javascript" src="js/buero.js"></script>
+<script type="text/javascript" src="js/auswahl_funktionen.js"></script>
 </head>
 <body onload="$('.clock').click(ToggleTimer);">
 <?php	
