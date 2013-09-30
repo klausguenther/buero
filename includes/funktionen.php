@@ -70,7 +70,7 @@ function Proof ($calculation = '', $data = '') {
 	floatval($data);
 	
 	if ($data > 0 && $data != $calculation) { // $data && $calculation && $data == $calculation
-		$return = 'id="error" '.$data.' '.$calculation;
+		$return = 'error';
 		return $return;
 	}
 	

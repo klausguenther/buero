@@ -71,7 +71,7 @@ table {
 	outline:solid 1px;
 }
 
-#error {
+.error {
 	background:'.$color.';
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQImWP8//8/AwMDw38GKGBC5sAEYIARXeA/AwMDAwA2QwYDWBk7ZQAAAABJRU5ErkJggg=="); repeat;	
 }
