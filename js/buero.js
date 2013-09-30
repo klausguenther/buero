@@ -57,8 +57,10 @@ function PrintRcn(id) {
 /* Init */
 $(document).ready(function() {
 	$('.data_row').mousedown(ContextMenue); // Kontext Menue
-	$('[contenteditable]').click(tdClicked); // erzeugt Eingabefeld
 	$('.dropdown').click(DropDown); // Dropdown Menue
+
+	$('[contenteditable]').blur(tdBlurred);
+	$('[contenteditable]').focus(tdFocussed);
 
 	RotateClock();
 });

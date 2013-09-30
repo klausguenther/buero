@@ -19,6 +19,7 @@ var job_id;
 <script type="text/javascript" src="js/delete.js"></script>
 <script type="text/javascript" src="js/kontextmenue.js"></script>
 <script type="text/javascript" src="js/buero.js"></script>
+<script type="text/javascript" src="js/auswahl_funktionen.js"></script>
 </head>
 <body>
 <div class="arrow" style="border-style:dotted;"></div>
@@ -40,20 +41,25 @@ var job_id;
 <?php
 /* Daten ausgeben */
 $ergebnis = mysql_query("SELECT * FROM jobs ORDER BY rechnungsnr ASC");
+$tabindex = 1;
 while($row = mysql_fetch_object($ergebnis))
 {
-	echo '<tr id="'.$row->id.'"class="data_row">';
-	echo '<td class="arrow">'.RightArrow($row->id, '').'</td>';
-	echo '<td class="dropdown" name="kunde">'.$row->kunde.'</td>';
-	echo '<td class="data" name="job" contenteditable="true">'.$row->job.'</td>';
-	echo '<td class="data datum" name="abgabe" contenteditable="true">'.ZahlZuDatum($row->abgabe).'</td>';
-	echo '<td class="data" name="rechnungsnr" contenteditable="true">';
+?>
+	<tr id="<?=$row->id ?>"class="data_row">
+	<td class="arrow"><?=RightArrow($row->id, '') ?></td>
+	<td class="dropdown" name="kunde"><?=$row->kunde ?></td>
+	<td class="data" name="job" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->job ?></td>
+	<td class="data datum" name="abgabe" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuDatum($row->abgabe) ?></td>
+	<td class="data" name="rechnungsnr" contenteditable="true" tabindex="<?=$tabindex++?>">
+	<?php
 	if ($row->rechnungsnr > 0) {
 		echo sprintf("%05d", $row->rechnungsnr);
 	}
-	echo '<td class="data datum" name="rechnungsdatum" contenteditable="true">'.ZahlZuDatum($row->rechnungsdatum).'</td>';
-	echo '<td class="data datum" name="abschluss" contenteditable="true">'.ZahlZuDatum($row->abschluss).'</td>';
-	echo '<td class="numeric">';
+	?>
+	<td class="data datum" name="rechnungsdatum" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuDatum($row->rechnungsdatum) ?></td>
+	<td class="data datum" name="abschluss" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuDatum($row->abschluss) ?></td>
+	<td class="numeric">
+	<?php
 	$brutto_cache = '';
 	$result = mysql_query("SELECT brutto_cache FROM jobs_positionen WHERE job_id=$row->id"); // Brutto_Cache aus jobs_positionen holen
 	if (!mysql_num_rows($result) == 0) {
@@ -68,11 +74,11 @@ while($row = mysql_fetch_object($ergebnis))
 	<tr id="new" class="new_col">
 		<td class="arrow">+</td>
 		<td class="dropdown" name="kunde"></td>
-		<td class="data" name="job" contenteditable="true"></td>
-		<td class="data" name="abgabe" contenteditable="true"></td>
-		<td class="data" name="rechnungsnr" contenteditable="true"></td>
-		<td class="data numeric" name="rechnungsdatum" contenteditable="true"></td>
-		<td class="data numeric" name="abschluss" contenteditable="true"></td>
+		<td class="data" name="job" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+		<td class="data" name="abgabe" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+		<td class="data" name="rechnungsnr" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+		<td class="data numeric" name="rechnungsdatum" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+		<td class="data numeric" name="abschluss" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		<td class="numeric"></td>
 	</tr>
 </tbody>
