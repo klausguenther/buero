@@ -47,32 +47,35 @@ var job_id;
 <tbody>
 <?php
 $ergebnis = mysql_query("SELECT * FROM kunden ORDER BY kundenkuerzel ASC");
+$tabindex = 1;
 while($row = mysql_fetch_object($ergebnis))
 {
-	echo '<tr id="'.$row->id.'"class="data_row">
-		<td style="border-style:dotted" class="arrow"></td>
-		<td class="data" name="kundenkuerzel">'.$row->kundenkuerzel.'</td>
-		<td class="data" name="firma">'.$row->firma.'</td>
-		<td class="data" name="name">'.$row->name.'</td>
-		<td class="data" name="vorname">'.$row->vorname.'</td>
-		<td class="data" name="strasse">'.$row->strasse.'</td>
-		<td class="data" name="plz">'.$row->plz.'</td>
-		<td class="data" name="ort">'.$row->ort.'</td>
-		<td class="data" name="anrede">'.$row->anrede.'</td>
-		</tr>';
+?>
+<tr id="<?=$row->id?>"class="data_row">
+	<td style="border-style:dotted" class="arrow"></td>
+	<td class="data" name="kundenkuerzel" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->kundenkuerzel?></td>
+	<td class="data" name="firma" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->firma?></td>
+	<td class="data" name="name" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->name?></td>
+	<td class="data" name="vorname" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->vorname?></td>
+	<td class="data" name="strasse" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->strasse?></td>
+	<td class="data" name="plz" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->plz?></td>
+	<td class="data" name="ort" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->ort?></td>
+	<td class="data" name="anrede" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->anrede?></td>
+</tr>
+<?php
 }
 ?>
-	<tr id="new" class="new_col">
-		<td class="arrow">+</td>
-		<td class="data" name="kundenkuerzel"></td>
-		<td class="data" name="firma"></td>
-		<td class="data" name="name"></td>
-		<td class="data" name="vorname"></td>
-		<td class="data" name="strasse"></td>
-		<td class="data" name="plz"></td>
-		<td class="data" name="ort"></td>
-		<td class="data" name="anrede"></td>
-	</tr>
+<tr id="new" class="new_col">
+	<td class="arrow">+</td>
+	<td class="data" name="kundenkuerzel" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="firma" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="name" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="vorname" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="strasse" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="plz" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="ort" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="anrede" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+</tr>
 </tbody>
 </table>
 </body>

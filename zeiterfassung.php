@@ -53,6 +53,7 @@ echo '<h1>Zeiterfassung '.$row->kunde.'_'.$row->job.' '.$jobs_position.'</h1>';
 <?php
 // Daten ausgeben
 $ergebnis = mysql_query("SELECT * FROM jobs_stunden WHERE jobs_positionen_id =$jobs_positionen_id ORDER BY start_datum DESC");
+$tabindex = 1;
 while($row = mysql_fetch_object($ergebnis)) {
 	$clock = RightArrow(0, 0, $row->id);
 	if ($clock == '<svg width="18px" height="16px"></svg>') {$style = 'style="border-style:dotted"';} else {$style = '';}
@@ -61,26 +62,27 @@ while($row = mysql_fetch_object($ergebnis)) {
 	} else {
 		$stunden = GetStd('', $row->id);
 	}
-	
-	echo '<tr id="'.$row->id.'" class="data_row">
-	<td class="arrow" '.$style.'>'.$clock.'</td>
-	<td class="data datum" name="start_datum" contenteditable="true">'.ZahlZuDatum($row->start_datum).'</td>
-	<td class="data" name="start_zeit" contenteditable="true">'.ZahlZuZeit($row->start_zeit).'</td>
-	<td class="data datum" name="end_datum" contenteditable="true">'.ZahlZuDatum($row->end_datum).'</td>
-	<td class="data" name="end_zeit" contenteditable="true">'.ZahlZuZeit($row->end_zeit).'</td>
-	<td class="data" name="beschreibung" contenteditable="true">'.$row->beschreibung.'</td>
-	<td class="data std numeric" name="stunden" contenteditable="true">'.ZahlZuStd($stunden).'</td>
-	</tr>';
+?>	
+	<tr id="<?=$row->id?>" class="data_row">
+	<td class="arrow" <?=$style?>><?=$clock?></td>
+	<td class="data datum" name="start_datum" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuDatum($row->start_datum)?></td>
+	<td class="data" name="start_zeit" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuZeit($row->start_zeit)?></td>
+	<td class="data datum" name="end_datum" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuDatum($row->end_datum)?></td>
+	<td class="data" name="end_zeit" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuZeit($row->end_zeit)?></td>
+	<td class="data" name="beschreibung" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->beschreibung?></td>
+	<td class="data std numeric" name="stunden" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuStd($stunden)?></td>
+	</tr>
+<?php
 }
 ?>
 <tr id="new" class="new_col">
 	<td class="arrow"><svg class="clock" width="18px" height="18px"><circle cx="9" cy="9" r="7" stroke="black" stroke-width="2" fill="none"/><line x1="9" y1="2" x2="9" y2="9"  stroke="black" stroke-width="2"/></svg></td>
-	<td class="data" name="start_datum" contenteditable="true"></td>
-	<td class="data" name="start_zeit" contenteditable="true"></td>
-	<td class="data" name="end_datum" contenteditable="true"></td>
-	<td class="data" name="end_zeit" contenteditable="true"></td>
-	<td class="data" name="beschreibung" contenteditable="true"></td>
-	<td class="data numeric" name="stunden" contenteditable="true"></td>
+	<td class="data" name="start_datum" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="start_zeit" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="end_datum" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="end_zeit" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data" name="beschreibung" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+	<td class="data numeric" name="stunden" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 </tr>
 </tbody>
 <?php GetSumStdZeiterfassung($jobs_positionen_id); // tfoot ?>
