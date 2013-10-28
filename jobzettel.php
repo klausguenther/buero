@@ -46,7 +46,7 @@ echo '<h1>Jobzettel ' . $row->kunde . ' ' . $row->job . '</a></h1>';
 		</tr>
 <?php
 /* Daten ausgeben */
-$ergebnis = mysql_query ( "SELECT * FROM jobs_positionen WHERE job_id =$job_id" );
+$ergebnis = mysql_query ( "SELECT * FROM jobs_positionen WHERE job_id =$job_id ORDER BY id ASC" );
 $tabindex = 1;
 while ( $row = mysql_fetch_object ( $ergebnis ) ) {
 	list ( $stundenanzahl_data, $stundenanzahl, $stundensatz_data, $stundensatz, $umstsatz_data, $umstsatz, $netto_data, $netto, $umst_data, $umst, $brutto_data, $brutto ) = Calculation ( $row->id );
