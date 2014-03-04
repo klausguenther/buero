@@ -13,7 +13,8 @@ function ZahlAnz($format) { // verhindert die Rückgabe der Einheit bei 0
 }
 
 function ZahlZuEur($zahl) { // Bsp. 10.50 €
-	$format =  sprintf("%.2f", $zahl).'&nbsp;&euro;';
+	$format =  sprintf("%.2f", $zahl);
+	$format = number_format ($format, 2, ',' ,'.' ).'&nbsp;&euro;';
 	$format = ZahlAnz($format);
 	return $format;
 }

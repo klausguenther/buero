@@ -1,10 +1,13 @@
 <?php
-/* Summe Jobliste berechnen */
+if (!isset($_SESSION)) session_start();
+
 include_once 'dbzugang.php';
+
+$search_jobliste = $_SESSION['search_jobliste'];
 
 $summe_brutto = '';
 $summe_offen = '';
-$ergebnis = mysql_query("SELECT id, abschluss FROM jobs");
+$ergebnis = mysql_query("SELECT id, abschluss FROM jobs $search_jobliste");
 	while($row = mysql_fetch_object($ergebnis))
 	{
 		$brutto_cache = '';
@@ -12,10 +15,10 @@ $ergebnis = mysql_query("SELECT id, abschluss FROM jobs");
 		if (!mysql_num_rows($result) == 0) {
 			$jobs_positionen_row = mysql_fetch_object($result);
 			$brutto_cache = $jobs_positionen_row->brutto_cache;
-			if (!$row->abschluss == '') {
-				$summe_brutto += $brutto_cache;
-			} else {
+			if ($row->abschluss == '' || $row->abschluss == '0000-00-00') {
 				$summe_offen += $brutto_cache;
+			} else {
+				$summe_brutto += $brutto_cache;
 			}
 		}
 	}

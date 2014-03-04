@@ -25,10 +25,13 @@ var job_id;
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/delete.js"></script>
 <script type="text/javascript" src="js/kontextmenue.js"></script>
+<script type="text/javascript" src="js/auswahl_funktionen.js"></script>
 <script type="text/javascript" src="js/buero.js"></script>
 </head>
 <body>
-<div class="arrow" style="border-style:dotted;"></div>
+<div class="arrow" style="border-style:dotted;">
+	<a href="jobliste.php"><svg class="arrow" width="18px" height="16px"><polygon points="4,9 14,4 14,14" fill="#000"></polygon></svg></a>
+</div>
 <h1>Kunden</h1>
 <table>
 <thead>

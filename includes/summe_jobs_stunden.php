@@ -19,8 +19,8 @@ function GetSumStdZeiterfassung($jobs_positionen_id) {
 	echo '</td></tr></tfoot>';
 }
 
-if(isset($_REQUEST['job_id'])) {
-	$jobs_positionen_id = $_REQUEST['job_id'];
+if(isset($_REQUEST['jobs_positionen_id'])) {
+	$jobs_positionen_id = $_REQUEST['jobs_positionen_id'];
 	echo GetSumStdZeiterfassung($jobs_positionen_id);
 }
 ?>

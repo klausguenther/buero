@@ -56,27 +56,27 @@ while ( $row = mysql_fetch_object ( $ergebnis ) ) {
 			<td class="data" name="position" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->position?></td>
 			<td class="data" name="beschreibung" contenteditable="true" tabindex="<?=$tabindex++?>"><?=$row->beschreibung?></td>
 			<td class="arrow"><?=RightArrow('', $row->id)?></td>
-			<td class="data numeric <?=Proof($stundenanzahl, $row->stundenanzahl)?>" name="stundenanzahl" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuStd($stundenanzahl)?></td>
-			<td class="data numeric <?=Proof($stundensatz, $row->stundensatz)?>" name="stundensatz" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($stundensatz_data)?></td>
+			<td class="data std numeric <?=Proof($stundenanzahl, $row->stundenanzahl)?>" name="stundenanzahl" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuStd($stundenanzahl)?></td>
+			<td class="data euro numeric <?=Proof($stundensatz, $row->stundensatz)?>" name="stundensatz" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($stundensatz_data)?></td>
 			<td class="data numeric <?=Proof($umstsatz, $row->umstsatz)?>" name="umstsatz" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuPro($umstsatz_data)?></td>
-			<td class="data numeric <?=Proof($netto, $row->netto)?>" name="netto" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($netto_data)?></td>
-			<td class="data numeric <?=Proof($umst, $row->umst)?>" name="umst" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($umst_data)?></td>
-			<td class="data numeric <?=Proof($brutto, $row->brutto)?>" name="brutto" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($brutto_data)?></td>
+			<td class="data euro numeric <?=Proof($netto, $row->netto)?>" name="netto" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($netto_data)?></td>
+			<td class="data euro numeric <?=Proof($umst, $row->umst)?>" name="umst" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($umst_data)?></td>
+			<td class="data euro numeric <?=Proof($brutto, $row->brutto)?>" name="brutto" contenteditable="true" tabindex="<?=$tabindex++?>"><?=ZahlZuEur($brutto_data)?></td>
 		</tr>
 <?php
 }
 ?>
 <tr id="new" class="new_col">
 			<td class="arrow">+</td>
-			<td class="data" name="postion" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data" name="position" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 			<td class="data" name="beschreibung" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 			<td class="arrow"></td>
-			<td class="data numeric" name="stundenanzahl" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
-			<td class="data numeric" name="stundensatz" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data std numeric" name="stundenanzahl" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data euro numeric" name="stundensatz" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 			<td class="data numeric" name="umstsatz" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
-			<td class="data numeric" name="netto" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
-			<td class="data numeric" name="umst" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
-			<td class="data numeric" name="brutto" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data euro numeric" name="netto" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data euro numeric" name="umst" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
+			<td class="data euro numeric" name="brutto" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		</tr>
 <?php GetSummeJobzettel($job_id); // <tfoot> ?>
 </table>

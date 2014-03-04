@@ -36,21 +36,20 @@ if ($row->rechnungsnr > 0) {
 	mysql_query("UPDATE jobs SET rechnungsnr='$rechnungsnr' WHERE id='$job_id'");
 }
 // Leistungszeitraum
-setlocale(LC_TIME, 'de_DE');
-if ($row->abgabe != '0000-00-00') {
-	$leistungszeitraum = strftime("%b %Y", strtotime($row->abgabe));
-} else { // wenn leer aktuelles Datum einsetzen
+setlocale(LC_TIME, "de_DE.UTF-8");
+if ($row->abgabe == '0000-00-00' || $row->abgabe == NULL) { // wenn leer aktuelles Datum einsetzen
 	$abgabe = date("Y-m-d");
 	mysql_query("UPDATE jobs SET abgabe='$abgabe' WHERE id='$job_id'");
-	setlocale(LC_TIME, 'de_DE');
 	$leistungszeitraum = strftime("%b %Y", strtotime($abgabe));
+} else {
+	$leistungszeitraum = strftime("%b %Y", strtotime($row->abgabe));
 }
 // Rechnungsdatum
-if ($row->rechnungsdatum != '0000-00-00') {
-	$rechnungsdatum = $row->rechnungsdatum;
-} else { // wenn leer aktuelles Datum einsetzen
+if ($row->rechnungsdatum == '0000-00-00' || $row->rechnungsdatum == NULL) { // wenn leer aktuelles Datum einsetzen
 	$rechnungsdatum = date("Y-m-d");
 	mysql_query("UPDATE jobs SET rechnungsdatum='$rechnungsdatum' WHERE id='$job_id'");
+} else {
+	$rechnungsdatum = $row->rechnungsdatum;
 }
 ?>
 <!DOCTYPE svg:svg PUBLIC
@@ -61,7 +60,7 @@ if ($row->rechnungsdatum != '0000-00-00') {
 <html>
 <head>
 <meta charset="utf-8">
-<?php RGB(200,0,200)?>
+<?php RGB(0,0,255)?>
 <style type="text/css">
 * {margin:0px; padding:0px;}
 body {width:800px; font-family:Arial, Helvetica; font-size:11pt; line-height:24px;}

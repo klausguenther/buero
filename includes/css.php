@@ -31,7 +31,8 @@ echo '<style type="text/css">
 }
 
 body {
-	margin: 30px;
+	margin:30px;
+	height:100%;
 }
 
 div.arrow {
@@ -43,6 +44,10 @@ div.arrow {
 h1 {
 	margin-left: 30px;
 	font-size:25px;
+}
+			
+a {
+	text-decoration:none;
 }
 
 table {
@@ -106,7 +111,7 @@ svg, img {
 	background:'.$hover.';
 }
 
-div.dropdown {
+div.dropdownlist {
 	position:absolute;
 	z-index:99;
 }
@@ -116,32 +121,31 @@ div.contextmenue {
 	z-index:100;
 }
 
-div.dropdown ul, div.contextmenue ul {
+div.dropdownlist ul, div.contextmenue ul {
 	position: absolute;
 	margin:0; padding:0;
 	border:dotted 1px '.$color.';
 	border-bottom:none;
 	list-style-type:none;
-	box-shadow:5px 5px 12px '.$shadow.';
+	box-shadow:3px 3px 5px '.$shadow.';
 }
 
 div.contextmenue ul {
-	box-shadow:5px 5px 12px '.$shadow.';
+	box-shadow:3px 3px 5px '.$shadow.';
 }
 
-.dropdown li, .contextmenue li {
+.dropdownlist ul li, .contextmenue li {
 	background:#fff;
 	padding:4px;
 	border-bottom:dotted 1px '.$color.';
 }
 
-.dropdown li:hover, .contextmenue li:hover {
+.contextmenue li:hover, .dropdownlist ul li:hover {
 	background:'.$hover.';
 }
-
-.contextmenue li a, .dropdown li a {
+			
+.contextmenue li a, .dropdownlist ul li a {
 	color:'.$color.';
-	text-decoration:none;
 	white-space:nowrap;
 	overflow:hidden;
 }
@@ -157,7 +161,7 @@ div.confirmbox {
 	padding:20px;
 	border:dotted 1px '.$color.';
 	background:#fff;
-	box-shadow:5px 5px 12px '.$shadow.';
+	box-shadow:3px 3px 5px '.$shadow.';
 }
 
 div.confirmbox a {
@@ -165,7 +169,6 @@ div.confirmbox a {
 	float:right;
 	margin:5px;
 	margin-top:45px;
-	text-decoration:none;
 	color:'.$color.';
 	background:#fff;
 	padding:3px;

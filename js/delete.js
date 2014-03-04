@@ -21,11 +21,18 @@ function DeleteRow(id) {
 				$('.summe').replaceWith($tfoot_summe_data);
 			});
 		}
+		if (tabelle == 'ausgaben') { // Ausgaben Summe ersetzen
+			$.get('includes/summe_ausgaben.php', function(summe) {
+				$tfoot_summe_data = summe;
+				$('.summe').replaceWith($tfoot_summe_data);
+			});
+		}
 	});
 }
 
 function DeleteZeiterfassung(jobs_positionen_id, gesamtstunden) {
 	$.get('includes/delete_zeiterfassung.php?id=' + jobs_positionen_id + '&gesamtstunden=' + gesamtstunden, function() {
-		window.location.reload();
+		jobzettel = $('div.arrow a').attr('href');
+		window.location.href = jobzettel;
 	});
 }

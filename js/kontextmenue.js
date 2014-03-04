@@ -44,6 +44,15 @@ function ContextMenue(e){
 			}
 		}
 		
+		if (tabelle == 'ausgaben') {
+			title = $(this).children().eq(1).text() + ' ' + $(this).children().eq(2).text();
+			if (title == ' ') {
+				title = 'Markierte Ausgabe';
+			} else {
+				title = 'Ausgabe <i>'+ title +'</i>';	
+				}
+		}
+		
 		var menue = '<ul>';
 		if (tabelle == 'kunden') {
 			menue += '<li><a href="javascript:ConfirmDelete(' + id + ', \'' + title + '\')">' + title + ' l&ouml;schen</a></li>';
@@ -59,6 +68,9 @@ function ContextMenue(e){
 		if (tabelle == 'jobs_stunden') {
 			menue += '<li><a href="javascript:ConfirmDelete(' + id + ', \'' + eintrag + '\')">' + eintrag + ' l&ouml;schen</a></li>';
 			menue += '<li><a href="javascript:ConfirmDeleteZeiterfassung(' + id + ', \'' + zeiterfassung + '\')">' + zeiterfassung + ' &uuml;bertragen/l&ouml;schen</a></li>';
+		}
+		if (tabelle == 'ausgaben') {
+			menue += '<li><a href="javascript:ConfirmDelete(' + id + ', \'' + title + '\')">' + title + ' l&ouml;schen</a></li>';
 		}
 		menue += '</ul>';
     	$(this).addClass('selected');
@@ -76,7 +88,7 @@ function ContextMenue(e){
 /* Confirm Box Eintrag loeschen*/
 function ConfirmDelete(id, title) {
 	content = '<div class="confirmbox">' + title + ' l&ouml;schen?<br>';
-	content += '<a href="javascript:$(\'.confirmbox\').remove(); $(\'tr\').removeClass(\'selected\');">abbrechen</a>';
+	content += '<a href="#" onclick="javascript:$(\'.confirmbox\').remove(); $(\'tr\').removeClass(\'selected\');">abbrechen</a>';
 	content += '<a href="javascript:DeleteRow(' + id + ')"> l&ouml;schen </a>';
 	content +='</div>';
 	$('table').before(content);
@@ -91,12 +103,12 @@ function ConfirmDeleteZeiterfassung(id, title) {
 	gesamtstunden = gesamtstunden.replace(/\s/g, '');
 	gesamtstunden = gesamtstunden.replace(':', '-');
 	content = '<div class="confirmbox">' + title + ' &uuml;bertragen/l&ouml;schen?<br>';
-	content += '<a href="javascript:$(\'.confirmbox\').remove(); $(\'tr\').removeClass(\'selected\');">abbrechen</a>';
+	content += '<a href="#" onclick="javascript:$(\'.confirmbox\').remove(); $(\'tr\').removeClass(\'selected\');">abbrechen</a>';
 	content += '<a href="javascript:DeleteZeiterfassung(' + job_id + ')"> l&ouml;schen </a>';
 	content += '<a href="javascript:DeleteZeiterfassung(' + job_id + ',' + gesamtstunden + ')"> &uuml;bertragen</a>';
 	content +='</div>';
 	$('table').before(content);
-	$('.confirmbox').css('left',Math.floor($('.confirmbox').width() / -2) -30);
+	$('.confirmbox').css('margin-left',Math.floor($('.confirmbox').width() / -2) -30);
 	$('.contextmenue').remove();
 }
 

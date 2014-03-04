@@ -1,6 +1,6 @@
 <?php
 
-/* Kalkulation */
+/* Kalkulation Jobzettel*/
 function Calculation ($jobs_positionen_id) {
 	$ergebnis = mysql_query("SELECT * FROM jobs_positionen WHERE id =$jobs_positionen_id");
 	$row = mysql_fetch_object($ergebnis);
