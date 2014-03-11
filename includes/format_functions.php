@@ -4,7 +4,7 @@ date_default_timezone_set('Europe/Berlin');
 // Gibt von einer Zahl die Zahl mit Stellen und Einheit zurück.
 
 function ZahlAnz($format) { // verhindert die Rückgabe der Einheit bei 0
-	if ($format != 0) {
+	if (preg_match('/[1-9]/', $format)) {
 		$format =  $format;
 	} else {
 		$format = '';
@@ -12,9 +12,13 @@ function ZahlAnz($format) { // verhindert die Rückgabe der Einheit bei 0
 	return $format;
 }
 
+function AnzNull($num) { // gibt 0,00 € zurück wenn leer
+	if ($num) {return $num;} else {return '0,00 €';}
+}
+
 function ZahlZuEur($zahl) { // Bsp. 10.50 €
 	$format =  sprintf("%.2f", $zahl);
-	$format = number_format ($format, 2, ',' ,'.' ).'&nbsp;&euro;';
+	$format = number_format($format, 2, ',' ,'.' ).'&nbsp;&euro;';
 	$format = ZahlAnz($format);
 	return $format;
 }
