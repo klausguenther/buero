@@ -4,6 +4,7 @@ if(isset($_SESSION['tabelle'])) {$tabelle = $_SESSION['tabelle'];} else {$tabell
 if(isset($_REQUEST['job_id'])) {$job_id = $_REQUEST['job_id'];} else {$job_id = '';}
 
 include_once 'includes/dbzugang.php';
+setlocale(LC_TIME, "de_DE.UTF-8");
 
 $ergebnis = mysql_query("SELECT * FROM jobs WHERE id =$job_id");
 $row = mysql_fetch_object($ergebnis);
@@ -30,13 +31,13 @@ $kunde = mysql_fetch_object($result);
 if ($row->rechnungsnr > 0) {
 	$rechnungsnr = $row->rechnungsnr;
 } else { // wenn leer naechst hoehere Nummer einsetzen
-	$get_nummer = mysql_query("SELECT MAX(rechnungsnr) FROM jobs");
+	$aktuelles_jahr = date("Y").'-00-00';
+	$get_nummer = mysql_query("SELECT MAX(rechnungsnr) FROM jobs WHERE rechnungsdatum >'$aktuelles_jahr'");
 	$max_nummer = mysql_fetch_array($get_nummer);
 	$rechnungsnr = $max_nummer['MAX(rechnungsnr)'] + 1;
 	mysql_query("UPDATE jobs SET rechnungsnr='$rechnungsnr' WHERE id='$job_id'");
 }
 // Leistungszeitraum
-setlocale(LC_TIME, "de_DE.UTF-8");
 if ($row->abgabe == '0000-00-00' || $row->abgabe == NULL) { // wenn leer aktuelles Datum einsetzen
 	$abgabe = date("Y-m-d");
 	mysql_query("UPDATE jobs SET abgabe='$abgabe' WHERE id='$job_id'");
@@ -130,7 +131,7 @@ width="325px" height="16px" viewBox="0 0 325 16">
 
 <div id="rechnung">
 <div id="anrede">
-<?php 
+<?php
 if ($anrede) {
 	echo $anrede;
 } else {

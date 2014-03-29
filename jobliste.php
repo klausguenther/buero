@@ -56,7 +56,7 @@ var job_id;
 <tbody>
 <?php
 /* Daten ausgeben */
-$ergebnis = mysql_query("SELECT * FROM jobs $search_jobliste ORDER BY rechnungsnr ASC");
+$ergebnis = mysql_query("SELECT * FROM jobs $search_jobliste ORDER BY EXTRACT(YEAR FROM rechnungsdatum), rechnungsnr ASC");
 $tabindex = 1;
 while($row = mysql_fetch_object($ergebnis))
 {
