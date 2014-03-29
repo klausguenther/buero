@@ -44,7 +44,7 @@ var tabelle = 'jobs_suche';
 <tbody>
 <?php $tabindex = 1; ?>
 	<tr id="new" class="new_col">
-		<td class="arrow">+</td>
+		<td class="arrow" style="border:1px dotted;">+</td>
 		<td class="data dropdown" name="kunde" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		<td class="data" name="job" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		<td class="data datum" name="abgabe" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
@@ -52,7 +52,7 @@ var tabelle = 'jobs_suche';
 		<td class="data datum" name="rechnungsdatum" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		<td class="data datum" name="abschluss" contenteditable="true" tabindex="<?=$tabindex++?>"></td>
 		<!-- <td class="data numeric" name="brutto" contenteditable="true" tabindex="<? // $tabindex++?>"></td> -->
-		<td></td>
+		<td style="border:1px dotted;"></td>
 	</tr>
 </tbody> 
 </table>
